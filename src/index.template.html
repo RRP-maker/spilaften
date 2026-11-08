@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef1fb">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0d1c">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Mario Kart-turnering</title>
+<style>@@CSS@@</style>
+</head>
+<body data-view="home">
+<div class="checker" aria-hidden="true"></div>
+<main class="wrap">
+
+  <section class="vhome homesec" aria-labelledby="h-home">
+    <header class="top">
+      <div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <h1 id="h-home">Spilaften</h1>
+      <p class="sub">Point, runder og vindere samlet ét sted</p>
+    </header>
+  </section>
+
+  <section class="vhome" aria-labelledby="h-ongoing">
+    <h2 id="h-ongoing">Igangværende spil</h2>
+    <div class="glist" id="ongoing"></div>
+  </section>
+
+  <section class="vhome" aria-label="Tidligere spil">
+    <button type="button" class="panel gamecard histcard" data-act="history">
+      <span class="emblem bpem"><svg class="histico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#5e5ce6"/><circle cx="32" cy="32" r="17" fill="none" stroke="#fff" stroke-width="4"/><path d="M32 22v11l7 5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="gc-text"><b>Tidligere spil</b><small id="histcount">Afsluttede turneringer</small></span>
+      <svg class="gc-arrow" width="22" height="22" viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </section>
+
+  <section class="vhome" aria-labelledby="h-choose">
+    <h2 id="h-choose">Vælg spil</h2>
+    <div class="glist">
+      <button type="button" class="panel gamecard" data-act="newgame">
+        <img class="emblem" src="@@IMG:emblem@@" alt="" width="56" height="56">
+        <span class="gc-text"><b>Mario Kart</b><small>Turnering for 2-12 spillere med Grand Prix, liga og finale</small></span>
+        <svg class="gc-arrow" width="22" height="22" viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="panel gamecard" data-act="newfc">
+        <span class="emblem bpem"><svg class="bpemblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#1fa34a"/><g stroke="#fff" stroke-opacity=".75" stroke-width="2" fill="none"><rect x="8" y="10" width="48" height="44" rx="2"/><path d="M8 32h48"/><circle cx="32" cy="32" r="7"/><rect x="22" y="10" width="20" height="7"/><rect x="22" y="47" width="20" height="7"/></g><circle cx="44" cy="40" r="7.5" fill="#fff"/><path d="M44 35.6l2.6 1.9-1 3.1h-3.2l-1-3.1z" fill="#1c1c1e"/></svg></span>
+        <span class="gc-text"><b>FIFA</b><small>EA Sports FC-turnering for 2-12 med liga, grupper, knockout, schweizisk eller vinderen bliver</small></span>
+        <svg class="gc-arrow" width="22" height="22" viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="panel gamecard" data-act="newlg">
+        <span class="emblem bpem"><svg class="bpemblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#e8346a"/><path d="M14 20h18l-2.4 28H16.4z" fill="none" stroke="#fff" stroke-width="3.2" stroke-linejoin="round"/><path d="M15 28h16" stroke="#fff" stroke-width="3.2"/><rect x="34" y="26" width="18" height="18" rx="4.5" fill="#fff" transform="rotate(12 43 35)"/><circle cx="39.6" cy="31.4" r="1.9" fill="#e8346a"/><circle cx="46" cy="38.8" r="1.9" fill="#e8346a"/><circle cx="42.8" cy="35.1" r="1.9" fill="#e8346a"/></svg></span>
+        <span class="gc-text"><b>Drukspil og lege</b><small>Regler til 68 spil, plus beerpong-turnering, kortbunker, terninger, timere og liv</small></span>
+        <svg class="gc-arrow" width="22" height="22" viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <nav class="vsetup vplay vbpsetup vbpplay vfcsetup vfcplay vhistory vparty vpg toolbar" aria-label="Navigation">
+    <button type="button" class="back glass" data-act="home">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M11 4L6 9l5 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="backlbl">Forside</span>
+    </button>
+    <span class="navtitle" id="navtitle" aria-hidden="true"></span>
+    <div class="glassgroup glass" role="group" aria-label="Spillere">
+      <button type="button" class="gg-add" id="btn-add" data-act="openadd" aria-expanded="false">Tilføj spiller</button>
+      <button type="button" class="gg-wd" id="btn-wd" data-act="openwd" aria-expanded="false">Fratrådt</button>
+    </div>
+    <div class="glassgroup glass bpgroup" role="group" aria-label="Hold">
+      <button type="button" class="gg-add" id="bp-add" data-act="bopenadd">Tilføj hold</button>
+      <button type="button" class="gg-wd" id="bp-wd" data-act="bopenwd">Trækker sig</button>
+    </div>
+    <div class="glassgroup glass bpgroup fcgroup" role="group" aria-label="Deltagere">
+      <button type="button" class="gg-add" id="fc-add" data-act="fopenadd">Tilføj</button>
+      <button type="button" class="gg-wd" id="fc-wd" data-act="fopenwd">Trækker sig</button>
+    </div>
+  </nav>
+
+  <header class="vsetup vplay top hasemblem">
+    <div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <img class="emblem hemblem" src="@@IMG:emblem@@" alt="" width="64" height="64">
+    <h1 id="gtitle">Mario Kart-turnering</h1>
+    <p class="sub" id="sub"></p>
+  </header>
+
+  <div class="vplay" id="addpanel"></div>
+  <div class="vplay" id="wdpanel"></div>
+
+  <section class="vsetup" aria-labelledby="h-spillere">
+    <h2 id="h-spillere">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="9" r="5" fill="#0b8de0" stroke="#1a1a2e" stroke-width="2.5"/><path d="M4 25c0-6 4-9 10-9s10 3 10 9z" fill="#e52521" stroke="#1a1a2e" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      Spillere
+    </h2>
+    <p class="hint">Hver spiller får en farve. Skriv navnet ved farven.</p>
+    <div class="panel players" id="players"></div>
+    <button type="button" class="addbtn" id="add" data-act="add">Tilføj spiller</button>
+  </section>
+
+  <section class="vsetup vplay setsec" aria-labelledby="h-settings">
+    <h2 id="h-settings">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="9" fill="#c9d1dc" stroke="#1a1a2e" stroke-width="2.5"/><circle cx="14" cy="14" r="3.5" fill="#1a1a2e"/><path d="M14 2v4M14 22v4M2 14h4M22 14h4M5.5 5.5l2.8 2.8M19.7 19.7l2.8 2.8M5.5 22.5l2.8-2.8M19.7 8.3l2.8-2.8" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"/></svg>
+      Indstillinger
+    </h2>
+    <p class="hint" id="sethint">Tryk på en kategori for at åbne eller lukke den.</p>
+    <div class="cats" id="settings"></div>
+  </section>
+
+  <div class="vplay" id="planmsg"></div>
+
+  <section class="vplay" aria-labelledby="h-stilling">
+    <h2 id="h-stilling">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M7 3h14v7a7 7 0 0 1-14 0V3z" fill="#ffcf1f" stroke="#1a1a2e" stroke-width="2.5" stroke-linejoin="round"/><path d="M7 6H3c0 4 2 6 4 6M21 6h4c0 4-2 6-4 6" fill="none" stroke="#1a1a2e" stroke-width="2.5"/><rect x="11" y="16" width="6" height="5" fill="#ffcf1f" stroke="#1a1a2e" stroke-width="2.5"/><rect x="7" y="21" width="14" height="4" rx="1.5" fill="#e52521" stroke="#1a1a2e" stroke-width="2.5"/></svg>
+      Stilling
+    </h2>
+    <p class="hint" id="rankhint"></p>
+    <div id="banner"></div>
+    <div class="panel tablebox"><table id="stand"></table></div>
+    <div id="champ"></div>
+  </section>
+
+  <section class="vplay" aria-labelledby="h-gruppe">
+    <h2 id="h-gruppe">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M6 3v22" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"/><path d="M8 4h16v11H8z" fill="#fff" stroke="#1a1a2e" stroke-width="2.5"/><path d="M8 4h4v4H8zM16 4h4v4h-4zM12 8h4v4h-4zM20 8h4v4h-4zM8 12h4v3H8zM16 12h4v3h-4z" fill="#1a1a2e"/></svg>
+      Grand Prix
+    </h2>
+    <p class="hint">Skriv hver spillers point, når et Grand Prix er kørt.</p>
+    <div class="rules" id="rules"></div>
+    <div class="rounds" id="rounds"></div>
+    <datalist id="cuplist"></datalist>
+  </section>
+
+  <section class="vplay" aria-labelledby="h-finale" id="finsec">
+    <h2 id="h-finale">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M3 24h22" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"/><rect x="10" y="7" width="8" height="17" fill="#ffcf1f" stroke="#1a1a2e" stroke-width="2.5"/><rect x="2.5" y="13" width="7.5" height="11" fill="#c9d1dc" stroke="#1a1a2e" stroke-width="2.5"/><rect x="18" y="16" width="7.5" height="8" fill="#e29552" stroke="#1a1a2e" stroke-width="2.5"/></svg>
+      Finale
+    </h2>
+    <p class="hint" id="finhint"></p>
+    <div id="final"></div>
+  </section>
+
+
+  <header class="vbpsetup vbpplay top hasemblem">
+    <span class="emblem bpem"><svg class="bpemblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0a7cff"/><g fill="#ff3b30" stroke="#fff" stroke-width="2.2"><circle cx="15.5" cy="16" r="5.4"/><circle cx="26.5" cy="16" r="5.4"/><circle cx="37.5" cy="16" r="5.4"/><circle cx="48.5" cy="16" r="5.4"/><circle cx="21" cy="26.5" r="5.4"/><circle cx="32" cy="26.5" r="5.4"/><circle cx="43" cy="26.5" r="5.4"/><circle cx="26.5" cy="37" r="5.4"/><circle cx="37.5" cy="37" r="5.4"/><circle cx="32" cy="47.5" r="5.4"/></g><circle cx="50" cy="48" r="5" fill="#fff"/></svg></span>
+    <h1 id="bptitle">Beerpong-turnering</h1>
+    <p class="sub" id="bpsub"></p>
+  </header>
+  <div class="vbpplay" id="bppanel"></div>
+  <div class="vbpplay" id="bpinfo"></div>
+  <div class="vbpplay bpwinwrap" id="bpwinner"></div>
+
+  <section class="vbpsetup" aria-labelledby="h-bpteams">
+    <h2 id="h-bpteams">Hold</h2>
+    <p class="hint">Giv holdet et navn, eller skriv bare spillerne. Hvert hold får en farve.</p>
+    <div class="bpteams" id="bpteams"></div>
+    <button type="button" class="addbtn" id="bpadd" data-act="baddteam">Tilføj hold</button>
+    <button type="button" class="setbtn" id="bpmix" data-act="bmix">Bland spillerne til nye hold</button>
+  </section>
+
+  <section class="vbpplay" id="bpnextsec" aria-labelledby="h-bpnext">
+    <h2 id="h-bpnext">Næste kamp</h2>
+    <div id="bpnext"></div>
+  </section>
+
+  <section class="vbpplay" aria-label="Regler">
+    <div id="bprules"></div>
+  </section>
+
+  <section class="vbpplay" id="bpstandsec" aria-labelledby="h-bpstand">
+    <h2 id="h-bpstand">Stilling</h2>
+    <p class="hint" id="bpstandhint"></p>
+    <div class="bpstand" id="bpstand"></div>
+  </section>
+
+  <section class="vbpplay" aria-labelledby="bpmatchtitle">
+    <h2 id="bpmatchtitle">Kampe</h2>
+    <div class="bpmatches" id="bpmatches"></div>
+  </section>
+
+  <section class="vbpsetup vbpplay setsec" aria-labelledby="h-bpset">
+    <h2 id="h-bpset">Indstillinger</h2>
+    <p class="hint">Tryk på en kategori for at åbne eller lukke den.</p>
+    <div class="cats" id="bpsettings"></div>
+  </section>
+
+  <div class="vbpsetup startbar">
+    <button type="button" class="startbtn glass tinted" id="bpstart" data-act="bstart"><span class="sb-main">Start turnering</span><span class="startsum" id="bpsum"></span></button>
+  </div>
+
+  <header class="vfcsetup vfcplay top hasemblem">
+    <span class="emblem bpem"><svg class="bpemblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#1fa34a"/><g stroke="#fff" stroke-opacity=".75" stroke-width="2" fill="none"><rect x="8" y="10" width="48" height="44" rx="2"/><path d="M8 32h48"/><circle cx="32" cy="32" r="7"/><rect x="22" y="10" width="20" height="7"/><rect x="22" y="47" width="20" height="7"/></g><circle cx="44" cy="40" r="7.5" fill="#fff"/><path d="M44 35.6l2.6 1.9-1 3.1h-3.2l-1-3.1z" fill="#1c1c1e"/></svg></span>
+    <h1 id="fctitle">FIFA-turnering</h1>
+    <p class="sub" id="fcsub"></p>
+  </header>
+  <div class="vfcplay" id="fcpanel"></div>
+  <div class="vfcplay" id="fcinfo"></div>
+  <div class="vfcplay bpwinwrap" id="fcwinner"></div>
+
+  <section class="vfcsetup" aria-labelledby="h-fcents">
+    <h2 id="h-fcents">Deltagere</h2>
+    <p class="hint" id="fcenthint">Skriv navnene. Hold i spillet er valgfrit, fx hvis alle har et fast hold.</p>
+    <div class="bpteams" id="fcents"></div>
+    <button type="button" class="addbtn" id="fcadd" data-act="faddent">Tilføj spiller</button>
+  </section>
+
+  <section class="vfcplay" id="fcnextsec" aria-labelledby="h-fcnext">
+    <h2 id="h-fcnext">Næste kamp</h2>
+    <div id="fcnext"></div>
+  </section>
+
+  <section class="vfcplay" aria-label="Regler">
+    <div id="fcrules"></div>
+  </section>
+
+  <section class="vfcplay" id="fcstandsec" aria-labelledby="h-fcstand">
+    <h2 id="h-fcstand">Stilling</h2>
+    <p class="hint" id="fcstandhint"></p>
+    <div class="bpstand" id="fcstand"></div>
+  </section>
+
+  <section class="vfcplay" aria-labelledby="fcmatchtitle">
+    <h2 id="fcmatchtitle">Kampe</h2>
+    <div class="bpmatches" id="fcmatches"></div>
+  </section>
+
+  <section class="vfcsetup vfcplay setsec" aria-labelledby="h-fcset">
+    <h2 id="h-fcset">Indstillinger</h2>
+    <p class="hint">Tryk på en kategori for at åbne eller lukke den.</p>
+    <div class="cats" id="fcsettings"></div>
+  </section>
+
+  <div class="vfcsetup startbar">
+    <button type="button" class="startbtn glass tinted" id="fcstart" data-act="fstart"><span class="sb-main">Start turnering</span><span class="startsum" id="fcsum"></span></button>
+  </div>
+  <div class="vsetup startbar">
+    <button type="button" class="startbtn glass tinted" id="startbtn" data-act="start"><span class="sb-main">Start spil</span><span class="startsum" id="startsum"></span></button>
+  </div>
+  <header class="vhistory top hasemblem">
+    <span class="emblem bpem"><svg class="histico" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#5e5ce6"/><circle cx="32" cy="32" r="17" fill="none" stroke="#fff" stroke-width="4"/><path d="M32 22v11l7 5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <h1>Tidligere spil</h1>
+    <p class="sub" id="histsub"></p>
+  </header>
+  <section class="vhistory" aria-label="Afsluttede turneringer">
+    <div class="glist" id="histlist"></div>
+    <div id="histfoot"></div>
+  </section>
+  <div class="vplay vbpplay vfcplay robanner panel" id="robanner"></div>
+  <header class="vparty top hasemblem">
+    <span class="emblem bpem"><svg class="bpemblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#e8346a"/><path d="M14 20h18l-2.4 28H16.4z" fill="none" stroke="#fff" stroke-width="3.2" stroke-linejoin="round"/><path d="M15 28h16" stroke="#fff" stroke-width="3.2"/><rect x="34" y="26" width="18" height="18" rx="4.5" fill="#fff" transform="rotate(12 43 35)"/><circle cx="39.6" cy="31.4" r="1.9" fill="#e8346a"/><circle cx="46" cy="38.8" r="1.9" fill="#e8346a"/><circle cx="42.8" cy="35.1" r="1.9" fill="#e8346a"/></svg></span>
+    <h1>Drukspil og lege</h1>
+    <p class="sub" id="lgsub"></p>
+  </header>
+  <section class="vparty lgtop" aria-label="Spillere og turnering">
+    <div id="lgplayers"></div>
+    <button type="button" class="panel gamecard" data-act="newbp">
+        <span class="emblem bpem"><svg class="bpemblem" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="15" fill="#0a7cff"/><g fill="#ff3b30" stroke="#fff" stroke-width="2.2"><circle cx="15.5" cy="16" r="5.4"/><circle cx="26.5" cy="16" r="5.4"/><circle cx="37.5" cy="16" r="5.4"/><circle cx="48.5" cy="16" r="5.4"/><circle cx="21" cy="26.5" r="5.4"/><circle cx="32" cy="26.5" r="5.4"/><circle cx="43" cy="26.5" r="5.4"/><circle cx="26.5" cy="37" r="5.4"/><circle cx="37.5" cy="37" r="5.4"/><circle cx="32" cy="47.5" r="5.4"/></g><circle cx="50" cy="48" r="5" fill="#fff"/></svg></span>
+        <span class="gc-text"><b>Beerpong-turnering</b><small>2-12 hold med knockout, liga, grupper eller bordets konge</small></span>
+        <svg class="gc-arrow" width="22" height="22" viewBox="0 0 18 18" aria-hidden="true"><path d="M7 4l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+  </section>
+  <section class="vparty lgtop" aria-label="Find et spil">
+    <input class="nameinp lgsearch" id="lgq" type="search" autocomplete="off" enterkeyhint="search" placeholder="Søg efter et spil" aria-label="Søg">
+    <div class="lgcats" id="lgcats" role="group" aria-label="Kategori"></div>
+    <button type="button" class="gobtn lgrand" data-act="lgrandom">Find en tilfældig leg</button>
+  </section>
+  <section class="vparty" id="lglist" aria-label="Spil"></section>
+  <header class="vpg top hasemblem" id="pghead"></header>
+  <section class="vpg lgpage" id="pgbody"></section>
+</main>
+<div class="edge edge-top" aria-hidden="true"></div>
+<div class="edge edge-bottom" aria-hidden="true"></div>
+<div class="checker bottom" aria-hidden="true"></div>
+
+<script>@@JS@@</script>
+</body>
+</html>

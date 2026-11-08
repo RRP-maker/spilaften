@@ -1,0 +1,171 @@
+/* ================= Glass v2 =================
+   Frosted glass on cards and controls over a living color field.
+   One metaphor: liquid glass. Text sits on near-opaque fills for AA contrast. */
+:root {
+  --bg: #eef1fb;
+  --card: rgba(255, 255, 255, 0.6);
+  --card2: rgba(255, 255, 255, 0.55);
+  --solid: rgba(255, 255, 255, 0.94);
+  --ink: #141414;
+  --muted: rgba(20, 20, 28, 0.66);
+  --faint: rgba(20, 20, 28, 0.36);
+  --fill: rgba(24, 30, 60, 0.07);
+  --fill2: rgba(24, 30, 60, 0.13);
+  --sep: rgba(24, 30, 60, 0.1);
+  --tint: #1856ff;
+  --green: #07a85a;
+  --red: #ea2143;
+  --gold: #ffc61a;
+  --hl: rgba(255, 198, 26, 0.16);
+  --rim: rgba(255, 255, 255, 0.7);
+  --rim-top: rgba(255, 255, 255, 0.95);
+  --lift: 0 1px 2px rgba(24, 30, 60, 0.06), 0 10px 30px rgba(24, 30, 60, 0.1);
+  --frost: blur(22px) saturate(180%);
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 24px;
+  --r-in: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0d1c; --card: rgba(34, 39, 64, 0.5); --card2: rgba(255, 255, 255, 0.05); --solid: rgba(46, 52, 82, 0.96);
+    --ink: #f5f7ff; --muted: rgba(232, 236, 255, 0.72); --faint: rgba(232, 236, 255, 0.4);
+    --fill: rgba(255, 255, 255, 0.08); --fill2: rgba(255, 255, 255, 0.14); --sep: rgba(255, 255, 255, 0.1);
+    --tint: #5c8aff; --green: #2fd98a; --red: #ff5470; --hl: rgba(255, 198, 26, 0.13);
+    --rim: rgba(255, 255, 255, 0.12); --rim-top: rgba(255, 255, 255, 0.24);
+    --lift: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 34px rgba(0, 0, 0, 0.4);
+    --glass-bg: rgba(40, 46, 74, 0.5);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a0d1c; --card: rgba(34, 39, 64, 0.5); --card2: rgba(255, 255, 255, 0.05); --solid: rgba(46, 52, 82, 0.96);
+  --ink: #f5f7ff; --muted: rgba(232, 236, 255, 0.72); --faint: rgba(232, 236, 255, 0.4);
+  --fill: rgba(255, 255, 255, 0.08); --fill2: rgba(255, 255, 255, 0.14); --sep: rgba(255, 255, 255, 0.1);
+  --tint: #5c8aff; --green: #2fd98a; --red: #ff5470; --hl: rgba(255, 198, 26, 0.13);
+  --rim: rgba(255, 255, 255, 0.12); --rim-top: rgba(255, 255, 255, 0.24);
+  --lift: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 34px rgba(0, 0, 0, 0.4);
+  --glass-bg: rgba(40, 46, 74, 0.5);
+}
+
+body { font-family: var(--font-body); letter-spacing: -0.005em; }
+h1 { font-weight: 800; letter-spacing: -0.035em; }
+h2 { font-weight: 800; letter-spacing: -0.025em; }
+.card h3, .sheet h3 { font-weight: 700; }
+
+/* The color field the glass bends: a soft mesh in the game's four colors */
+body::before {
+  inset: 0; height: auto;
+  background:
+    radial-gradient(42% 32% at 8% 4%, rgba(24, 86, 255, 0.34), transparent 70%),
+    radial-gradient(38% 30% at 96% 14%, rgba(234, 33, 67, 0.26), transparent 70%),
+    radial-gradient(40% 32% at 14% 62%, rgba(255, 198, 26, 0.26), transparent 70%),
+    radial-gradient(44% 34% at 92% 78%, rgba(7, 202, 107, 0.24), transparent 70%),
+    radial-gradient(36% 28% at 50% 104%, rgba(24, 86, 255, 0.22), transparent 70%);
+  -webkit-mask-image: none; mask-image: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body::before { opacity: 0.85; }
+}
+
+/* ---------- Glass surfaces: cards, lists, sheets ---------- */
+.panel, .cats, .bteam {
+  background: var(--card);
+  -webkit-backdrop-filter: var(--frost);
+  backdrop-filter: var(--frost);
+  box-shadow: inset 0 0 0 1px var(--rim), inset 0 1px 0 var(--rim-top), var(--lift);
+}
+.cats .cat, .cats .cb, .cat.panel { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.cats .cat.panel { border-radius: 0; }
+.cb { background: transparent; }
+.cat + .cat summary { box-shadow: inset 1.125rem 1px 0 transparent, inset 0 1px 0 var(--sep); }
+.mode + .mode { box-shadow: inset 0 1px 0 var(--sep); }
+.modes { background: var(--fill); }
+.mode[aria-pressed="true"] { background: var(--solid); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--tint) 55%, transparent); border-radius: var(--r-in); }
+.rulecard.panel { background: var(--card); -webkit-backdrop-filter: var(--frost); backdrop-filter: var(--frost); box-shadow: inset 0 0 0 1px var(--rim), inset 0 1px 0 var(--rim-top), var(--lift); border-radius: var(--r); }
+.rulecard .cb { background: transparent; }
+.card.is-next { box-shadow: inset 0 0 0 2px var(--tint), inset 0 1px 0 var(--rim-top), 0 10px 34px color-mix(in srgb, var(--tint) 26%, transparent); }
+.gitem.isdone { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--green) 60%, transparent), inset 0 1px 0 var(--rim-top), var(--lift); }
+.sheet {
+  background: color-mix(in srgb, var(--solid) 80%, transparent);
+  -webkit-backdrop-filter: blur(28px) saturate(190%); backdrop-filter: blur(28px) saturate(190%);
+  box-shadow: inset 0 0 0 1px var(--rim), inset 0 1px 0 var(--rim-top), 0 24px 60px rgba(10, 14, 40, 0.3);
+}
+.scrim { background: rgba(10, 14, 40, 0.28); }
+
+/* Text and inputs sit on near-opaque fills so contrast holds over any color */
+.nameinp, .cup, .score {
+  background: color-mix(in srgb, var(--solid) 78%, transparent);
+  box-shadow: inset 0 0 0 1px var(--sep);
+  color: var(--ink);
+}
+.score:focus, .nameinp:focus, .cup:focus { background: var(--solid); box-shadow: inset 0 0 0 2px var(--tint), 0 0 0 4px color-mix(in srgb, var(--tint) 22%, transparent); }
+.cup.rnd { background: color-mix(in srgb, var(--gold) 16%, var(--solid)); }
+.seg { background: var(--fill); }
+.seg button[aria-pressed="true"] { background: var(--solid); box-shadow: 0 2px 8px rgba(24, 30, 60, 0.14), inset 0 0 0 1px var(--rim); }
+.cups button { background: color-mix(in srgb, var(--solid) 70%, transparent); box-shadow: inset 0 0 0 1px var(--sep); }
+.cups button[aria-pressed="true"] { background: #1856ff; color: #fff; box-shadow: 0 4px 14px color-mix(in srgb, var(--tint) 40%, transparent); }
+.stepper { background: var(--fill); }
+th { border-bottom: 1px solid var(--sep); color: var(--muted); }
+td { border-bottom: 1px solid var(--sep); }
+tr.fin td { background: var(--hl); }
+.rchip, .lights { background: color-mix(in srgb, var(--solid) 70%, transparent); box-shadow: inset 0 0 0 1px var(--sep); }
+.lights.s-next { background: color-mix(in srgb, var(--tint) 14%, var(--solid)); }
+.lights.s-done { background: color-mix(in srgb, var(--green) 16%, var(--solid)); }
+.note { background: color-mix(in srgb, var(--tint) 12%, var(--card)); }
+.banner { background: color-mix(in srgb, var(--gold) 20%, var(--card)); }
+.bmatch .mrow.won { background: color-mix(in srgb, var(--green) 15%, transparent); }
+
+/* ---------- Interactive glass: buttons lift and glow when pressed ---------- */
+.addbtn, .gobtn, .actbtn.add, .setbtn.go, .startbtn.glass.tinted, .glassgroup .gg-add {
+  background: linear-gradient(180deg, #3a70ff 0%, #1856ff 100%);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.12), 0 6px 18px color-mix(in srgb, var(--tint) 34%, transparent);
+}
+.addbtn[disabled] { background: var(--fill2); color: var(--faint); box-shadow: none; }
+.setbtn, .rm, .xbtn, .gi-btns .rm {
+  background: color-mix(in srgb, var(--solid) 70%, transparent);
+  box-shadow: inset 0 0 0 1px var(--sep);
+}
+.rm, .setbtn.danger { color: var(--red); }
+.rm.armed, .setbtn.armed { background: var(--red); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--red) 34%, transparent); }
+.addbtn:active:not([disabled]), .gobtn:active, .setbtn:active, .rm:active, .xbtn:active, .cups button:active, .seg button:active:not([disabled]), .mode:active, .gamecard:active {
+  transform: scale(0.97);
+  filter: brightness(1.06);
+}
+.gamecard { transition: transform 160ms var(--ease-out), box-shadow 200ms ease, filter 160ms ease; }
+.gamecard > .emblem, .gamecard > .bpem { filter: drop-shadow(0 6px 14px rgba(24, 30, 60, 0.22)); }
+.gc-text b, .gi-text b { font-weight: 700; letter-spacing: -0.015em; }
+
+/* Glass toolbar group: one shared surface, tinted only for the primary action */
+.glass {
+  background: var(--glass-bg);
+  box-shadow: inset 0 0 0 1px var(--rim), inset 0 1px 0 var(--rim-top), var(--lift);
+}
+
+/* Winner: the celebration gets warm glass */
+.winner {
+  background: linear-gradient(135deg, rgba(255, 198, 26, 0.42), rgba(255, 198, 26, 0.14)), var(--card);
+  -webkit-backdrop-filter: var(--frost); backdrop-filter: var(--frost);
+  box-shadow: inset 0 0 0 1px rgba(255, 220, 120, 0.7), inset 0 1px 0 var(--rim-top), 0 14px 40px rgba(255, 170, 0, 0.22);
+  font-weight: 800; letter-spacing: -0.02em;
+}
+
+/* Scroll edges: blur only, so the color field keeps showing */
+.edge-top {
+  background: linear-gradient(color-mix(in srgb, var(--bg) 55%, transparent), transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.edge-bottom { background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 55%, transparent)); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+
+/* ---------- Accessibility ---------- */
+:is(button, summary, input, a):focus-visible { outline: 3px solid var(--tint); outline-offset: 2px; }
+@media (prefers-reduced-transparency: reduce) {
+  .panel, .cats, .bteam, .sheet, .winner, .rulecard.panel { background: var(--solid) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  body::before { opacity: 0.35; }
+}
+@media (prefers-contrast: more) {
+  .panel, .cats, .bteam, .sheet { background: var(--solid) !important; box-shadow: inset 0 0 0 1.5px var(--ink) !important; }
+  :root { --muted: var(--ink); }
+}
+

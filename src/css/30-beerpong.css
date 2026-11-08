@@ -1,0 +1,70 @@
+/* ---------- Beer pong ---------- */
+body[data-view="bpsetup"] main > :not(.vbpsetup),
+body[data-view="bpplay"] main > :not(.vbpplay) { display: none !important; }
+body[data-view="bpplay"] .setsec { order: 10; }
+body:not([data-view="play"]) .glassgroup:not(.bpgroup) { display: none; }
+body:not([data-view="bpplay"]) .bpgroup { display: none; }
+body[data-view="bpsetup"] .wrap { padding-bottom: calc(9rem + env(safe-area-inset-bottom, 0px)); }
+body[data-view="bpsetup"] .edge-bottom { display: block; }
+body[data-view="bpsetup"] .edge-top, body[data-view="bpplay"] .edge-top { display: block; }
+body[data-view="bpplay"] .navtitle { display: none; }
+.bpem { display: block; flex-shrink: 0; border-radius: 0; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18)); }
+.bpem svg { display: block; width: 100%; height: 100%; }
+.gamecard .bpem { width: 56px; height: 56px; }
+.hasemblem .bpem { grid-row: 1 / span 2; width: 64px; height: 64px; }
+.gemblem svg { display: block; width: 44px; height: 44px; }
+span.gemblem { flex-shrink: 0; }
+.cupi { flex-shrink: 0; }
+.bpteams { display: flex; flex-direction: column; gap: 0.625rem; }
+.bteam { background: var(--card); border-radius: var(--r); padding: 0.75rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.bteam-top { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.625rem; align-items: center; }
+.bteam-ps { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; padding-left: 36px; }
+.bteamedit { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.5rem; align-items: center; }
+.bteamedit .nameinp:not(:first-of-type) { grid-column: 2; }
+#bpmix { align-self: center; }
+.tl { display: inline-flex; align-items: center; gap: 0.625rem; min-width: 0; flex: 1; }
+.tl.muted { color: var(--muted); font-style: italic; }
+.tl-txt { display: flex; flex-direction: column; min-width: 0; }
+.tl-name { font-weight: 600; overflow-wrap: break-word; }
+.tl-txt small { color: var(--muted); font-size: 0.8125rem; overflow-wrap: break-word; }
+.bmatch .mrow { display: flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.25rem 0.5rem; margin: 0 -0.5rem; border-radius: 12px; }
+.bmatch .mrow.won { background: color-mix(in srgb, var(--green) 14%, transparent); }
+.bmatch .mrow.won .tl-name::after { content: " ✓"; color: var(--green); }
+.mscore { margin-left: auto; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.vs { font-size: 0.75rem; color: var(--muted); padding-left: 2.25rem; margin: -0.125rem 0; }
+.bmatch.wait { opacity: 0.75; }
+.bmatch .game { display: flex; flex-direction: column; gap: 0.5rem; padding: 0.75rem 0 0.5rem; border-top: 0.5px solid var(--sep); margin-top: 0.5rem; }
+.seg.wins button { white-space: normal; line-height: 1.2; padding: 0.375rem 0.75rem; min-height: 40px; }
+.cups { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.cups button {
+  min-width: 40px; min-height: 40px; padding: 0 0.5rem;
+  border: 0; border-radius: 999px; background: var(--fill); color: var(--ink);
+  font-size: 0.9375rem; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer;
+  transition: transform 120ms var(--ease-out), background-color 160ms ease, color 160ms ease;
+}
+.cups button:active { transform: scale(0.94); }
+.cups button[aria-pressed="true"] { background: #1856ff; color: #fff; }
+.cups .otbtn { padding: 0 0.875rem; }
+.mdone { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.625rem 0 0.375rem; border-top: 0.5px solid var(--sep); margin-top: 0.5rem; font-size: 0.9375rem; color: var(--muted); }
+.mdone .setbtn { min-height: 34px; }
+.sechead { margin: 0.75rem 0 0.25rem; font-size: 1rem; font-weight: 600; color: var(--muted); display: flex; flex-direction: column; gap: 0.125rem; }
+.sechead:first-child { margin-top: 0; }
+.sit { font-size: 0.8125rem; font-weight: 400; }
+.bpmatches { display: flex; flex-direction: column; gap: 0.5rem; }
+.bpstand { display: flex; flex-direction: column; gap: 0.5rem; }
+.tbtitle { margin: 0.5rem 0 0; font-size: 1rem; font-weight: 600; color: var(--muted); }
+.bpstand td.l .tl { gap: 0.5rem; }
+.queue { padding: 0.75rem 1rem 0.25rem; }
+.queue .prow { gap: 0.625rem; justify-content: flex-start; }
+.queue .prow .setbtn { margin-left: auto; }
+.klog { font-size: 0.9375rem; }
+.places { padding: 0.25rem 1rem; }
+.places .prow { justify-content: flex-start; gap: 0.75rem; }
+.bpwinwrap { display: flex; flex-direction: column; gap: 0.5rem; }
+.rulecard summary { min-height: 54px; }
+.rules-dl { margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.rules-dl dt { font-weight: 600; font-size: 0.9375rem; }
+.rules-dl dd { margin: 0.125rem 0 0; color: var(--muted); font-size: 0.875rem; line-height: 1.45; }
+.mode[disabled] { opacity: 0.45; cursor: not-allowed; }
+main > div:empty { display: none !important; }
+
