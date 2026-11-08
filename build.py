@@ -12,7 +12,7 @@ def img(m):
     return 'data:image/webp;base64,' + base64.b64encode(open(p, 'rb').read()).decode()
 html = re.sub(r'@@IMG:([a-z0-9/\-]+)@@', img, html)
 assert '@@' not in html, 'ubrugt markør'
-out = os.path.join(root, 'dist', 'index.html')
+out = os.path.join(root, 'docs', 'index.html')
 os.makedirs(os.path.dirname(out), exist_ok=True)
 open(out, 'w', encoding='utf-8', newline='').write(html)
 import shutil

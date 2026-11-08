@@ -1,0 +1,16 @@
+{
+  "name": "Spilaften",
+  "short_name": "Spilaften",
+  "description": "Turneringer, point og drukspil til spilaftener",
+  "lang": "da",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#3b2fb0",
+  "theme_color": "#eef1fb",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

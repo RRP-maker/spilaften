@@ -1,6 +1,6 @@
 import sys, json
 from playwright.sync_api import sync_playwright
-path = sys.argv[1] if len(sys.argv) > 1 else 'dist/index.html'
+path = sys.argv[1] if len(sys.argv) > 1 else 'docs/index.html'
 import os
 url = 'file://' + os.path.abspath(path)
 errs = []
