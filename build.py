@@ -15,4 +15,7 @@ assert '@@' not in html, 'ubrugt markør'
 out = os.path.join(root, 'dist', 'index.html')
 os.makedirs(os.path.dirname(out), exist_ok=True)
 open(out, 'w', encoding='utf-8', newline='').write(html)
+import shutil
+for f in glob.glob(os.path.join(src, 'static', '*')):
+    shutil.copy(f, os.path.dirname(out))
 print(out, len(html.encode()))
